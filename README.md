@@ -1,9 +1,14 @@
 # Savee
 A way to store facts for future fact-checking apps
 
-## Main project page:
+## Demo
+![savee_demo](https://user-images.githubusercontent.com/246724/228312015-fb7eece0-0c1e-4ed8-be34-e7bd7550bedf.gif)
+
+
+## Main project page (links, resources, etc):
 - [Notion](https://storm-vanilla-477.notion.site/Savee-2bec35f4769c41a78f01ca21eb5f1c7d)
 
+## Context:
 - Background:
     - Began as an idea for Spark-2023 hackathon, a hackathon aimed for Holocaust memorial, fighting fake content and antisemitism
     - We grouped as couple random people with same intent

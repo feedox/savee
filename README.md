@@ -61,7 +61,8 @@ A way to store facts for future fact-checking apps
 
 ## Contribute
 
-Contributions welcome! Read the [contribution guidelines](CONTRIBUTING.md) first and submit a Pull Request after Fork this repository.
+Contributions welcome! Read the [contribution guidelines](CONTRIBUTING.md) first and submit a Pull Request after Fork this repository.  
+Wanna talk? Chat with us [here](https://chat.whatsapp.com/Ck7JdQx1krlINNLMLmd3hr).
 
 ## Contact
 Please use GitHub [Issues](./issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc) to contact us.

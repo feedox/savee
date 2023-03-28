@@ -1,5 +1,5 @@
 # Savee
-A way to store facts for future fact-checking apps
+A GenAI tool that helps fight online fake content with fact-based generations
 
 ## Demo
 ![savee_demo](https://user-images.githubusercontent.com/246724/228312015-fb7eece0-0c1e-4ed8-be34-e7bd7550bedf.gif)

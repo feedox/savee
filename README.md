@@ -5,8 +5,8 @@ A way to store facts for future fact-checking apps
 ![savee_demo](https://user-images.githubusercontent.com/246724/228312015-fb7eece0-0c1e-4ed8-be34-e7bd7550bedf.gif)
 
 
-## Main project page (links, resources, etc):
-- [Notion](https://storm-vanilla-477.notion.site/Savee-2bec35f4769c41a78f01ca21eb5f1c7d)
+<!-- ## Main project page (links, resources, etc):
+- [Notion](https://storm-vanilla-477.notion.site/Savee-2bec35f4769c41a78f01ca21eb5f1c7d) -->
 
 ## Context:
 - Background:
@@ -48,6 +48,32 @@ A way to store facts for future fact-checking apps
         - [Yossi Klein](https://www.linkedin.com/in/ACoAAAZSxHkBNwIUF919EsK1rwOojhVSYMi-IgU)
         - [Ram Yonish](https://www.linkedin.com/in/ACoAAACCIfcB2cRhc0PmgfBvECt9v9QZkFLQ7BQ)
         - @בית לוחמי הגטאות (Yaron)
+
+## How does it work:
+<img width="1060" alt="image" src="https://user-images.githubusercontent.com/246724/228316892-5b975737-1559-4771-8790-16b7a6292b95.png">
+
+### Preprocess:
+- "Facts managers" select relevant historical documents containing unstructured texts, multilingual, that describe historical events related to the Holocaust.
+- They upload those files to Savee back-office webapp, it stores the files in the cloud
+- Each file being "compressed" from large blobs of unstructured text into smaller list of concise fact list
+- Each group of facts are aggregated or chunked into small chunks
+- Performs embedding process for each chunk and stores each chunk with the embedding vector. 
+
+### Install:
+- Users on the internet see the landing page, navigate to install instructions page
+- Install the Chrome extension
+
+### Query:
+- Users (aka "Ambassadors") navigate to a page on social media that contains fake or wrong content
+- User clicks on the extension and selects the post
+- The extension grabs the text and sends it to Botify, a purpose-specific bot for factual Q&A
+
+### Response generation:
+- Botify takes the text, embeds it and searches in the DB for facts semantically related to the text (using embedding vectors).
+- Top k results taken and composed into GPT prompt
+- Prompt is sent to OpenAI for completion, in such way that the response will be only based on the provided facts and nothing else.
+- Resulted text is sent back to the user
+
 
 ## Develop
 ### Setup

@@ -1,4 +1,4 @@
-# fact-base
+# Savee
 A way to store facts for future fact-checking apps
 
 ## Main project page (updating real time):

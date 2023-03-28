@@ -1,6 +1,9 @@
 # fact-base
 A way to store facts for future fact-checking apps
 
+## Main project page (updating real time):
+- [Notion](https://www.notion.so/FactBase-Savee-2bec35f4769c41a78f01ca21eb5f1c7d)
+
 
 ## Develop
 ### Setup

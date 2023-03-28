@@ -1,0 +1,21 @@
+# Global settings applied to the whole site.  
+# “base” is directory to change to before starting build, and
+# “public” is the directory to publish (relative to root of your repo).
+# “command” is your build command.
+
+[build]
+  command = "yarn && yarn workspace @proj/web build"
+  base    = ""
+  publish = "packages/web/build-web"
+#  ignore = "git diff --quiet HEAD^ HEAD . ../../packages/functions/"
+
+[build.environment]
+  NODE_VERSION = "16"
+  NETLIFY_USE_YARN = "true"
+  NETLIFY_YARN_WORKSPACES = "true"
+  NODE_ENV = "production"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

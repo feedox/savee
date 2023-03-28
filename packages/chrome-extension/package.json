@@ -1,0 +1,23 @@
+{
+	"name": "@proj/chrome-extension",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"build": "tsc",
+		"watch": "tsc --watch"
+	},
+	"dependencies": {
+		"@types/jest": "^27.4.0",
+		"@types/node": "^17.0.8"
+	},
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com"
+	},
+	"devDependencies": {},
+	"workspaces": {
+		"nohoist": [
+			"**/@types/**",
+			"**"
+		]
+	}
+}

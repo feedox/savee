@@ -1,0 +1,20 @@
+{
+	"name": "@proj/web",
+	"version": "0.0.2",
+	"main": "index.js",
+	"license": "MIT",
+	"private": true,
+	"scripts": {},
+	"dependencies": {},
+	"devDependencies": {},
+	"workspaces": {
+		"nohoist": [
+			"/@proj",
+			"**/@proj/",
+			"**/@proj/**",
+			"/bulma-toast",
+			"**/bulma-toast/",
+			"**"
+		]
+	}
+}

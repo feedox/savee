@@ -19,7 +19,7 @@
 		"declaration": true,
 
 		"paths": {},
-		"types": ["jest", "node"],
+		"types": [],
 		"rootDirs": ["./build"],
 		"baseUrl": "./src"
 	},

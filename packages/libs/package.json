@@ -13,10 +13,10 @@
 		"libx.js": "^2.34.0",
 		"readline": "^1.3.0"
 	},
+	"devDependencies": {},
 	"publishConfig": {
 		"registry": "https://npm.pkg.github.com"
 	},
-	"devDependencies": {},
 	"workspaces": {
 		"nohoist": [
 			"**/@types/**",

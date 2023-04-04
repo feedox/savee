@@ -1,0 +1,32 @@
+{
+	"projectName": "alt-gpt",
+	"projectCaption": "alt-gpt",
+	"version": "0.0.1",
+	"private": {
+		"appStoreId": "",
+		"livereload": false,
+		"livereloadPort": 35732,
+		"debugHost": "0.0.0.0",
+		"debugIsSecure": false,
+		"post": 3012,
+		"reloadDebounceMS": 500,
+		"reloadGraceMS": 500
+	},
+
+	"compiledFolder": "./src/compile/",
+	"compiledMainEntry": "main.js",
+
+	"envs": {
+		"prod": {
+			"env": "prod"
+		},
+		"dev": {
+			"env": "dev",
+			"apiUrl": "http://localhost:8080",
+			"websiteUrl": "https://localhost:{{debugPort}}",
+			"private": {
+				"someSpecialValueForDev": 111
+			}
+		}
+	}
+}

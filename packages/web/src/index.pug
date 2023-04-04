@@ -1,0 +1,61 @@
+doctype 
+html
+	head
+		meta(charset='UTF-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		meta(http-equiv='X-UA-Compatible', content='ie=edge')
+		title Savee
+		link(rel='stylesheet', href='style.css')
+
+		// build:css bundle/bundle.css
+		//- Frame styles:
+		link(rel="stylesheet",href="./node_modules/frame.libx.js/build-web/bundle/bundle.css")
+		link(rel="stylesheet",href="./node_modules/frame.libx.js/build-web/styles/icons.css")
+		link(rel="stylesheet",href="styles/style.css",defer)
+			
+		//- Project styles:
+		//- link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css')
+		//- link(rel="stylesheet",href="https://unpkg.com/buefy@0.9.3/dist/buefy.min.css",defer)
+		//- link(rel="stylesheet",href="./node_modules/buefy/dist/buefy.css",defer)
+		// endbuild
+
+		script(src='./node_modules/frame.libx.js/build-web/scripts/ts/browserified/frame.js')
+
+		// build:jsBundle bundle/libs.js
+		//- SystemJS:
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.6.1/system.min.js')
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.6.1/extras/named-exports.min.js')
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.6.1/extras/named-register.min.js')
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.6.1/extras/global.min.js')
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.6.1/extras/use-default.min.js')
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.6.1/extras/dynamic-import-maps.min.js')
+		// endbuild
+	body
+		#app.app-container
+			section.hero.is-fullheight
+				section.hero.is-success.is-fullheight(v-show='!isReady').has-background-grey-darker
+					.hero-body
+						.container
+							h1.title.text-center Hello World
+
+		script(type='systemjs-importmap').
+			{
+				"imports": {
+					"@scripts/ts/browserified/": "/scripts/ts/browserified/",
+					"@proj/libs/src": "/scripts/ts/libs/",
+					"frame.libx.js/build-web/": "/frame/",
+					"libx.js/": "node_modules/libx.js/",
+					"libx.js/build/bundles/browser.essentials": "node_modules/libx.js/build/bundles/browser.essentials.js"
+				}
+			}
+		// load a locally hosted module
+		script(type="application/javascript").
+			{
+				const b = System.import('/scripts/ts/browserified/index.js');
+				Promise.all([b]).then(async (m)=> {
+					System.import('/scripts/ts/index.js').then(async (mod)=> {
+						console.log('bootstrapped')
+					});
+				});
+			}
+

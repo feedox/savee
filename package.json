@@ -3,7 +3,8 @@
 	"private": true,
 	"scripts": {
 		"libs": "yarn workspace @proj/libs watch",
-		"web": "yarn workspace @proj/web watch",
+		"web": "yarn workspace @proj/web start",
+		"web:deploy": "yarn workspace @proj/web deploy",
 		"functions": "yarn workspace @proj/functions start",
 		"deploy-api-routes": "firebase deploy --only hosting",
 		"functions:watch": "yarn workspace @proj/functions watch",

@@ -1,0 +1,33 @@
+{
+    "name": "savee extension",
+    "version": "1.0",
+    "description": "Provides a response to posts containing holocaust denial",
+    "manifest_version": 3,
+    "permissions": [
+      "activeTab",
+      "tabs",
+      "contextMenus",
+      "storage"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "action": {
+      "default_title": "Savee",
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "savee_logo.png",
+        "128": "savee_logo.png"
+      }
+    },
+    "content_scripts": [
+      {
+        "matches": [
+          "<all_urls>"
+        ],
+        "js": [
+          "content.js"
+        ]
+      }
+    ]
+  }

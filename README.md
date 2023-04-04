@@ -81,7 +81,7 @@ A GenAI tool that helps fight online fake content with fact-based generations
 1. Run `$ yarn install`
 
 ### Start:
-1. Run `$ yarn start`
+1. Run `$ yarn web`
 2. Open browser on `http://0.0.0.0:3010/`
 * Check main package.json for more commands
 

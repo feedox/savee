@@ -1,4 +1,3 @@
-
 //create context menu
 chrome.contextMenus.create({
     id: "savee",
@@ -10,7 +9,7 @@ chrome.contextMenus.create({
 chrome.contextMenus.onClicked.addListener(function (info, tab) {
     // Check if the context menu item was clicked
     if (info.menuItemId === "savee") {
-        chrome.tabs.sendMessage(tab.id, { text: "activate-savee" });
+        chrome.tabs.sendMessage(tab.id, { text: "activate-savee", selection: info.selectionText });
     }
 }
 );

@@ -94,7 +94,7 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
         });
       }
     } else if (currentUrl.includes("facebook.com")) {
-      const textArea = document.querySelector('[aria-label="כתיבת תגובה"]') || lastCommentBox.querySelector('[aria-label="Write a comment…"]');
+      const textArea = document.querySelector('[aria-label="כתיבת תגובה"]') || lastCommentBox.querySelector('[aria-label="Write a comment"]');
       if (textArea) {
         textArea.focus();
         showLoadingIndicator();

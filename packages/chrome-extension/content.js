@@ -55,14 +55,20 @@ function showLoadingIndicator() {
   div.style.position = "fixed";
   div.style.top = "0";
   div.style.left = "0";
-  div.style.width = "100%";
-  div.style.height = "100%";
+  div.style.width = "99.9%";
+  div.style.height = "99.9%";
   div.style.background = "rgba(0, 0, 0, 0.5)";
   div.style.display = "flex";
   div.style.justifyContent = "center";
   div.style.alignItems = "center";
   div.classList.add("loader");
+  const animation = document.createElement("img");
+  animation.src = "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExYjQxNzhiNGI1ZDhmNWRkY2E2MzEyNWQyYjUyMzQ3ZjBlMTEzZjVhNSZjdD1z/92wJiJniUcIRJyeNYF/giphy.gif";
+  animation.style.width = "100px";
+  animation.style.height = "100px";
+  div.appendChild(animation);
   document.body.appendChild(div);
+  console.log(animation)
 }
 
 // function to hide the loading indicator

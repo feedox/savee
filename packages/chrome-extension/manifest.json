@@ -9,10 +9,7 @@
       "128": "savee_logo.png"
     },
     "permissions": [
-      "activeTab",
-      "tabs",
-      "contextMenus",
-      "storage"
+      "contextMenus"
     ],
     "background": {
       "service_worker": "background.js"

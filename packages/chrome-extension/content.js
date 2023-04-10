@@ -48,6 +48,31 @@ async function getSaveeResponse(post) {
   }
 }
 
+// function to create and show a loading indicator
+// function to create and show a loading indicator
+function showLoadingIndicator() {
+  const div = document.createElement("div");
+  div.style.position = "fixed";
+  div.style.top = "0";
+  div.style.left = "0";
+  div.style.width = "100%";
+  div.style.height = "100%";
+  div.style.background = "rgba(0, 0, 0, 0.5)";
+  div.style.display = "flex";
+  div.style.justifyContent = "center";
+  div.style.alignItems = "center";
+  div.classList.add("loader");
+  document.body.appendChild(div);
+}
+
+// function to hide the loading indicator
+function hideLoadingIndicator() {
+  const loader = document.querySelector(".loader");
+  console.log(loader);
+  console.log(loader.parentElement);
+  loader.parentElement.removeChild(loader);
+}
+
 // listener to receive message from background.js and execute getSaveeResponse function
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
   if (message.text === "activate-savee") {
@@ -56,8 +81,9 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
       const textArea = document.querySelector('[data-testid="tweetTextarea_0"]');
       if (textArea) {
         textArea.focus();
+        showLoadingIndicator();
         getSaveeResponse(message.selection).then(response => {
-          console.log(response);
+          hideLoadingIndicator();
           document.execCommand("insertText", false, response);
         });
       }
@@ -65,7 +91,9 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
       const textArea = document.querySelector('[aria-label="כתיבת תגובה"]') || lastCommentBox.querySelector('[aria-label="Write a comment…"]');
       if (textArea) {
         textArea.focus();
+        showLoadingIndicator();
         getSaveeResponse(message.selection).then(response => {
+          hideLoadingIndicator();
           document.execCommand("insertText", false, response);
         });
       }
@@ -73,7 +101,9 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
       const textArea = document.querySelector('[aria-label="Add a comment…"]');
       if (textArea) {
         textArea.focus();
+        showLoadingIndicator();
         getSaveeResponse(message.selection).then(response => {
+          hideLoadingIndicator();
           document.execCommand("insertText", false, response);
         });
       }
@@ -82,3 +112,5 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     }
   }
 });
+
+

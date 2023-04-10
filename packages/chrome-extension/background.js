@@ -1,11 +1,9 @@
 //first remove all context menus and then create a context menu
-chrome.contextMenus.removeAll(function () {
-    chrome.contextMenus.create({
-        id: "savee",
-        //title: "Create a response to the text:  \"%s\" by savee",
-        title: "Use savee as a response",
-        contexts: ["selection"]
-    });
+chrome.contextMenus.create({
+    id: "savee",
+    //title: "Create a response to the text:  \"%s\" by savee",
+    title: "Use savee as a response",
+    contexts: ["selection"]
 });
 
 

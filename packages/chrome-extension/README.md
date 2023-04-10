@@ -10,7 +10,7 @@ Savee is a Chrome extension that allows users to mark text containing false cont
 
 -   To run the extension, follow the steps below:
 
-    -   ![Download or clone the repository from GitHub](https://github.com/feedox/savee/tree/master/packages/chrome-extension):
+    -   [Download or clone the repository from GitHub](https://github.com/feedox/savee/tree/master/packages/chrome-extension):
     -   Open Google Chrome and go to chrome://extensions/.
     -   Enable the "Developer mode" toggle on the top right-hand corner of the page.
     -   Click the "Load unpacked" button and select the chrome-extension folder from the repository. The Savee Chrome Extension should now be loaded and ready to use.

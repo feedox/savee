@@ -10,7 +10,7 @@ Savee is a Chrome extension that allows users to mark text containing false cont
 
 -   To run the extension, follow the steps below:
 
-    -   Download or clone the repository from GitHub: [link](https://github.com/feedox/savee/tree/master/packages/chrome-extension):
+    -   Download or clone the repository from GitHub ![link](https://github.com/feedox/savee/tree/master/packages/chrome-extension)
 
     -   Open Google Chrome and go to chrome://extensions/.
     -   Enable the "Developer mode" toggle on the top right-hand corner of the page.
@@ -23,10 +23,15 @@ Savee is a Chrome extension that allows users to mark text containing false cont
 -   The Savee Chrome Extension project consists of the following files:
 
     -   manifest.json: This file contains the metadata and configuration information for the extension, including the permissions required, the background and content scripts, and the context menu item.
+
     -   background.js: This file sets up the context menu item for selecting text and sends a message to the content script to activate the extension when the context menu item is clicked.
+
     -   content.js: This file listens for messages from the background script and performs the logic for the extension. It sends a request to the Feedox API to get a response based on the selected text and inserts the response into the appropriate text area in the Facebook, Instagram, or Twitter post.
+
     -   package.json: This file contains the dependencies required for the development of the extension.
+
     -   popup.html: This file is the HTML template for the extension's popup window, which is used to display information about the extension.
+
     -   savee_logo.png: This file is the logo for the Savee Chrome Extension.
 
 ## Contributing:

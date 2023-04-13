@@ -53,7 +53,15 @@ A GenAI tool that helps fight online fake content with fact-based generations
 
 ## How does it work:
 
-<img width="1060" alt="image" src="https://user-images.githubusercontent.com/246724/228316892-5b975737-1559-4771-8790-16b7a6292b95.png">
+v0.1:
+<img width="999" alt="image" src="https://user-images.githubusercontent.com/246724/231689183-a77b1f92-0b12-4ce2-a9f8-6e052c2af762.png">
+
+<details>
+    <summary>v0 (Obsolete)</summary>
+    <img width="1060" alt="image" src="https://user-images.githubusercontent.com/246724/228316892-5b975737-1559-4771-8790-16b7a6292b95.png">
+</details>
+</br>
+
 
 ### Preprocess:
 

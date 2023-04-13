@@ -1,5 +1,6 @@
 {
 	"name": "my-packaprojectge",
+	"version": "0.1.0",
 	"private": true,
 	"scripts": {
 		"libs": "yarn workspace @proj/libs watch",

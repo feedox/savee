@@ -24,7 +24,7 @@
 		"bulma-toast": "^2.4.1",
 		"bulma-tooltip": "^3.0.2",
 		"firebase": "8",
-		"frame.libx.js": "^0.3.2",
+		"frame.libx.js": "^0.5.0",
 		"hotkeys-js": "^3.10.1",
 		"libx.js": "^2.35.0",
 		"lottie-web": "^5.9.4",

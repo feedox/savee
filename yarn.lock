@@ -6138,10 +6138,10 @@ fragment-cache@^0.2.1:
   dependencies:
     map-cache "^0.2.2"
 
-frame.libx.js@^0.3.2:
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/frame.libx.js/-/frame.libx.js-0.3.2.tgz#d1024a630acf0bceed3284d91cafb50db6f82949"
-  integrity sha512-7yNzFdF5+479LmAMJokF0KMDqGDKcisaZ43g3jTZEBdGepnxmmalh7nj5RGPwPhQkJl2AZcG7PJe6sNSRkNFvA==
+frame.libx.js@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/frame.libx.js/-/frame.libx.js-0.5.0.tgz#81ddec899d5efc97d6b4b598073ebebcf0762116"
+  integrity sha512-SlRmV34lECBhFOjKhTX69sh64LEOjtwu/82rsSW8T90Y5EVSRQf6OHmx8yGs10JDZOvhh6r2fgsWX72BpS+Dqw==
   dependencies:
     "@babel/plugin-proposal-decorators" "^7.19.3"
     "@babel/plugin-proposal-pipeline-operator" "^7.18.9"
@@ -6164,7 +6164,7 @@ frame.libx.js@^0.3.2:
     firebase-functions "^3.24.1"
     html2canvas "^1.4.1"
     is-plain-object "^5.0.0"
-    libx.js "^2.34.3"
+    libx.js "^2.35.2"
     lottie-web "^5.9.6"
     moment "^2.29.4"
     node-sass "^7.0.3"
@@ -8465,6 +8465,26 @@ libx.js@^2.34.0, libx.js@^2.34.3, libx.js@^2.35.0:
   version "2.35.0"
   resolved "https://registry.yarnpkg.com/libx.js/-/libx.js-2.35.0.tgz#09acad2d44a251fe5c2ad5eb66af0f7175e60b85"
   integrity sha512-CYrEfKh1MqgJOKHlopT4ikTFpHUv2kn/td/ConhYo9Wybn37k2FMLS/dt96hMJVQDPR/FY1s6k+OcWVByESRYQ==
+  dependencies:
+    axios "^0.21.3"
+    concurrency.libx.js "^1.1.1"
+    cors "^2.8.5"
+    crypto-js "^4.0.0"
+    detect.js "^2.2.3"
+    di.libx.js "^2.3.1"
+    form-data "^4.0.0"
+    glob "^7.2.0"
+    lodash "^4.17.21"
+    prompt "^1.1.0"
+    rxjs "^6.6.3"
+    rxjs-compat "^6.6.7"
+    xregexp "^5.0.2"
+    yargs "^17.2.1"
+
+libx.js@^2.35.2:
+  version "2.35.2"
+  resolved "https://registry.yarnpkg.com/libx.js/-/libx.js-2.35.2.tgz#3ca9b30633f28400d7c56bb288073332fb3c40a2"
+  integrity sha512-qFwZVNe9nk4usKGprPn7vGUNuS7xa/dV/m5IV/bW10OHwkjDYiulyWtaPPIyFs8HuwD9XJkN5X1z7oIfp2qkDw==
   dependencies:
     axios "^0.21.3"
     concurrency.libx.js "^1.1.1"

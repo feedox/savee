@@ -1,0 +1,52 @@
+- var projconfig = JSON.parse(JSON.stringify(config)); // <- Executed by pug, will remove private config from public web javascript context
+- var livereloadPort = projconfig.private.livereloadPort;
+- delete projconfig.private; // <- Executed by pug, will remove private config from public web javascript context
+- var isDev = projconfig.env == 'dev';
+
+
+doctype html
+html
+	head
+		meta(charset='UTF-8')
+		meta(name="viewport",content="width=device-width, initial-scale=1.0")
+		
+		title Savee - Fighting Holocaust Denial on Social Media
+
+		script(src="../libs/libx.min.js", skip)
+
+		style.
+			body { font-family:Arial, sans-serif; font-size:14px; line-height:1.5; padding:10px; min-width:500px; }
+			h1 { font-size:20px; font-weight:bold; margin-top:0; margin-bottom:10px; }
+			p { margin-top:0; margin-bottom:10px; }
+			img#logo { max-width:12px; max-height:12px; position:relative; }
+			#demo { margin-top:20px; }
+			#demo img { border:1px solid #ccc; padding:5px; max-width:100%; }
+			#footer { margin-top:20px; text-align:center; color:#888; font-size:12px; }
+			#footer a { color:#888; }
+
+	body
+		#app
+			h1 Savee - Fighting Holocaust Denial on Social Media
+
+			p.
+				Savee is a Chrome extension that allows users to mark text containing false content about the Holocaust on Facebook, Instagram, and Twitter and receive a response with real facts to respond to the post. The extension uses the Feedox API to generate responses based on the selected text.
+			
+			p.
+				To use Savee, simply enter the post on Facebook / Instagram / Twitter, highlight the text that contains Holocaust denial, click the right mouse button and select the Savee option. After a few seconds, the comment will appear and you can edit it or immediately publish it.
+
+			.login 
+				if isDev
+					a(href="http://localhost:3012/", target="_blank") {{callToAction}} 
+				else
+					a(href="https://saveeai.com", target="_blank") {{callToAction}}  
+
+			#demo
+				h2 Demo
+				img(src='https://raw.githubusercontent.com/feedox/savee/master/savee_demo.gif', alt='Savee demo')
+			
+			#footer
+				img#logo(src='../savee_logo.png', alt='Savee logo')
+				a(href='https://saveeai.com/') &nbsp;Savee Website
+				span &nbsp;| © 2023 Savee
+		
+		script(src="popup.js")

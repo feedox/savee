@@ -23,7 +23,7 @@
 		"bulma": "^0.9.4",
 		"bulma-toast": "^2.4.1",
 		"bulma-tooltip": "^3.0.2",
-		"firebase": "^9.19.1",
+		"firebase": "8",
 		"frame.libx.js": "^0.3.2",
 		"hotkeys-js": "^3.10.1",
 		"libx.js": "^2.35.0",

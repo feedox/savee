@@ -80,9 +80,17 @@ function hideLoadingIndicator() {
 }
 
 // listener to receive message from background.js and execute getSaveeResponse function
-chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
+chrome.runtime.onMessage.addListener(async function (message, sender, sendResponse) {
   if (message.text === "activate-savee") {
     const currentUrl = window.location.href;
+
+    const { user } = await chrome.storage.sync.get();
+    console.log('savee activated', user);
+    if (user == null) {
+      alert('You must be signed in to use Savee to generate responses. Please click on the extension icon and sign in.');
+      return;
+    }
+
     if (currentUrl.includes("twitter.com")) {
       const textArea = document.querySelector('[data-testid="tweetTextarea_0"]');
       if (textArea) {

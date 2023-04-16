@@ -1,36 +1,33 @@
 {
-    "name": "savee extension",
-    "version": "1.0",
-    "description": "Provides a response to posts containing holocaust denial",
-    "manifest_version": 3,
-    "icons": {
-      "16": "savee_logo.png",
-      "48": "savee_logo.png",
-      "128": "savee_logo.png"
-    },
-    "permissions": [
-      "contextMenus"
-    ],
-    "background": {
-      "service_worker": "background.js"
-    },
-    "action": {
-      "default_title": "Savee",
-      "default_popup": "popup.html",
-      "default_icon": {
-        "16": "savee_logo.png",
-        "48": "savee_logo.png",
-        "128": "savee_logo.png"
-      }
-    },
-    "content_scripts": [
-      {
-        "matches": [
-          "<all_urls>"
-        ],
-        "js": [
-          "content.js"
-        ]
-      }
-    ]
-  }
+	"name": "savee extension",
+	"version": "1.0",
+	"description": "Provides a response to posts containing holocaust denial",
+	"manifest_version": 3,
+	"icons": {
+		"16": "savee_logo.png",
+		"48": "savee_logo.png",
+		"128": "savee_logo.png"
+	},
+	"permissions": ["contextMenus", "storage"],
+	"background": {
+		"service_worker": "background.js"
+	},
+	"action": {
+		"default_title": "Savee",
+		"default_popup": "popup/popup.html",
+		"default_icon": {
+			"16": "savee_logo.png",
+			"48": "savee_logo.png",
+			"128": "savee_logo.png"
+		}
+	},
+	"content_scripts": [
+		{
+			"matches": ["<all_urls>"],
+			"js": ["content.js"]
+		}
+	],
+	"externally_connectable": {
+		"matches": ["http://localhost:3012/*", "https://savee-ai.web.app/*", "https://saveeai.com/*"]
+	}
+}

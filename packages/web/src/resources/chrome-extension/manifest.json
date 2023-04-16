@@ -23,7 +23,7 @@
 	},
 	"content_scripts": [
 		{
-			"matches": ["<all_urls>"],
+			"matches": ["https://www.facebook.com/*", "https://www.instagram.com/*", "https://twitter.com/*"],
 			"js": ["content.js"]
 		}
 	],

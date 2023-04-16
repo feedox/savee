@@ -1,14 +1,3 @@
-//test for creating a new element and appending it to the body for future use
-
-// function createSelectedTextElem(text) {
-//   const div = document.createElement("div");
-//   const h = document.createElement("h2");
-//   const node = document.createTextNode(text);
-//   h.appendChild(node);
-//   div.appendChild(h);
-//   document.body.appendChild(div);
-// }
-
 // function to call the Feedox API and return the response
 async function getSaveeResponse(post) {
   const url = 'https://api.feedox.com/v1/ai/conversation/5579120785547-8400';
@@ -49,7 +38,6 @@ async function getSaveeResponse(post) {
 }
 
 // function to create and show a loading indicator
-// function to create and show a loading indicator
 function showLoadingIndicator() {
   const div = document.createElement("div");
   div.style.position = "fixed";
@@ -68,21 +56,17 @@ function showLoadingIndicator() {
   animation.style.height = "100px";
   div.appendChild(animation);
   document.body.appendChild(div);
-  console.log(animation)
 }
 
 // function to hide the loading indicator
 function hideLoadingIndicator() {
   const loader = document.querySelector(".loader");
-  console.log(loader);
-  console.log(loader.parentElement);
   loader.parentElement.removeChild(loader);
 }
 
 // listener to receive message from background.js and execute getSaveeResponse function
 chrome.runtime.onMessage.addListener(async function (message, sender, sendResponse) {
   if (message.text === "activate-savee") {
-    const currentUrl = window.location.href;
 
     const { user } = await chrome.storage.sync.get();
     console.log('savee activated', user);
@@ -91,46 +75,21 @@ chrome.runtime.onMessage.addListener(async function (message, sender, sendRespon
       return;
     }
 
-    if (currentUrl.includes("twitter.com")) {
-      const textArea = document.querySelector('[data-testid="tweetTextarea_0"]');
-      if (textArea) {
-        textArea.focus();
-        showLoadingIndicator();
-        getSaveeResponse(message.selection).then(response => {
-          hideLoadingIndicator();
+    const twitterTextArea = document.querySelector('[data-testid="tweetTextarea_0"]');
+    const facebookTextArea = document.querySelector('[aria-label="כתיבת תגובה"]') || document.querySelector('[aria-label="Write a comment"]');
+    const instagramTextArea = document.querySelector('[aria-label="Add a comment…"]');
+    const exsistTextArea = twitterTextArea || facebookTextArea || instagramTextArea;
+    if (exsistTextArea) {
+      exsistTextArea.focus();
+      showLoadingIndicator();
+      getSaveeResponse(message.selection).then(response => {
+        hideLoadingIndicator();
+        if (response === "Bad input.") {
+          alert("Savee is only active for posts that contain false facts about the Holocaust");
+        } else {
           document.execCommand("insertText", false, response);
-        });
-      } else {
-        alert('Error: could not find reply area');
-      }
-    } else if (currentUrl.includes("facebook.com")) {
-      const textArea = document.querySelector('[aria-label="כתיבת תגובה"]') || document.querySelector('[aria-label="Write a comment"]');
-      if (textArea) {
-        textArea.focus();
-        showLoadingIndicator();
-        getSaveeResponse(message.selection).then(response => {
-          hideLoadingIndicator();
-          document.execCommand("insertText", false, response);
-        });
-      } else {
-        alert('Error: could not find reply area');
-      }
-    } else if (currentUrl.includes("instagram.com")) {
-      const textArea = document.querySelector('[aria-label="Add a comment…"]');
-      if (textArea) {
-        textArea.focus();
-        showLoadingIndicator();
-        getSaveeResponse(message.selection).then(response => {
-          hideLoadingIndicator();
-          document.execCommand("insertText", false, response);
-        });
-      } else {
-        alert('Error: could not find reply area');
-      }
-    } else {
-      alert("Savee can only be activated on Twitter, Facebook, or Instagram.");
+        }
+      });
     }
   }
 });
-
-

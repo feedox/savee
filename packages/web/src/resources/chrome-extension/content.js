@@ -100,6 +100,8 @@ chrome.runtime.onMessage.addListener(async function (message, sender, sendRespon
           hideLoadingIndicator();
           document.execCommand("insertText", false, response);
         });
+      } else {
+        alert('Error: could not find reply area');
       }
     } else if (currentUrl.includes("facebook.com")) {
       const textArea = document.querySelector('[aria-label="כתיבת תגובה"]') || document.querySelector('[aria-label="Write a comment"]');
@@ -110,6 +112,8 @@ chrome.runtime.onMessage.addListener(async function (message, sender, sendRespon
           hideLoadingIndicator();
           document.execCommand("insertText", false, response);
         });
+      } else {
+        alert('Error: could not find reply area');
       }
     } else if (currentUrl.includes("instagram.com")) {
       const textArea = document.querySelector('[aria-label="Add a comment…"]');
@@ -120,6 +124,8 @@ chrome.runtime.onMessage.addListener(async function (message, sender, sendRespon
           hideLoadingIndicator();
           document.execCommand("insertText", false, response);
         });
+      } else {
+        alert('Error: could not find reply area');
       }
     } else {
       alert("Savee can only be activated on Twitter, Facebook, or Instagram.");

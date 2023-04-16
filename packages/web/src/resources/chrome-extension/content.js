@@ -90,6 +90,8 @@ chrome.runtime.onMessage.addListener(async function (message, sender, sendRespon
           document.execCommand("insertText", false, response);
         }
       });
+    } else {
+      alert("Error: Could not find replay area.");
     }
   }
 });

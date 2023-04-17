@@ -1,6 +1,6 @@
 {
 	"name": "savee extension",
-	"version": "2.0",
+	"version": "2.2",
 	"description": "Provides a response to posts containing holocaust denial",
 	"manifest_version": 3,
 	"icons": {

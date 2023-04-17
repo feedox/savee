@@ -68,12 +68,17 @@ function hideLoadingIndicator() {
 chrome.runtime.onMessage.addListener(async function (message, sender, sendResponse) {
   if (message.text === "activate-savee") {
 
-    const { user } = await chrome.storage.sync.get();
-    console.log('savee activated', user);
-    if (user == null) {
-      alert('You must be signed in to use Savee to generate responses. Please click on the extension icon and sign in.');
-      return;
-    }
+    // const { user } = await chrome.storage.sync.get();
+    // console.log('savee activated', user);
+    // if (user == null) {
+    //   alert('You must be signed in to use Savee to generate responses. Please click on the extension icon and sign in.');
+    //   return;
+    // }
+
+    const isDev = !('update_url' in chrome.runtime.getManifest());
+    const url = isDev ? 'http://localhost:3012/' : 'https://app.saveeai.com/';
+    window.open(`${url}?input=` + encodeURI(message.selection.replace(/[\&]/g, ' ')), '_blank');
+    return;
 
     const twitterTextArea = document.querySelector('[data-testid="tweetTextarea_0"]');
     const facebookTextArea = document.querySelector('[aria-label="כתיבת תגובה"]') || document.querySelector('[aria-label="Write a comment"]');

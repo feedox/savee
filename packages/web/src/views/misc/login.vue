@@ -115,7 +115,7 @@ export default {
 			}
 		};
 		if (!libx.di.modules.userManager.isReady) {
-			libx.di.modules.userManager.onReady.once(fnReady);
+			libx.di.modules.userManager.onStatusChanged.once(fnReady);
 		} else {
 			fnReady();
 		}

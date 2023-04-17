@@ -6138,10 +6138,10 @@ fragment-cache@^0.2.1:
   dependencies:
     map-cache "^0.2.2"
 
-frame.libx.js@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/frame.libx.js/-/frame.libx.js-0.5.0.tgz#81ddec899d5efc97d6b4b598073ebebcf0762116"
-  integrity sha512-SlRmV34lECBhFOjKhTX69sh64LEOjtwu/82rsSW8T90Y5EVSRQf6OHmx8yGs10JDZOvhh6r2fgsWX72BpS+Dqw==
+frame.libx.js@^0.5.3:
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/frame.libx.js/-/frame.libx.js-0.5.3.tgz#bb93fd3d3bb97b74f9e854ecba8c0a55efb010c0"
+  integrity sha512-SwSgNC82HzC6qDTG4RgKwKSng/ITZwhsKU75D4I/RNmV2Admgi26C1WlssuDBS911Rongx8ndD8DB6YXewTONA==
   dependencies:
     "@babel/plugin-proposal-decorators" "^7.19.3"
     "@babel/plugin-proposal-pipeline-operator" "^7.18.9"

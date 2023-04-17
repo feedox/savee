@@ -64,39 +64,77 @@ function hideLoadingIndicator() {
   loader.parentElement.removeChild(loader);
 }
 
+async function getRemoteConfig() {
+  try {
+    const ret = await libx.di.modules.network.httpGetJson('https://savee-ai-default-rtdb.europe-west1.firebasedatabase.app/Savee/ext-remote-config.json')
+    console.log('getRemoteConfig: ', ret);
+    return ret;
+  } catch (err) {
+    console.warn('getRemoteConfig: Failed to get remote config', err);
+    return {};
+  }
+}
+
+let config = {};
+(async () => {
+  config = await getRemoteConfig();
+})();
+
+function openAppTab(input) {
+  const isDev = !('update_url' in chrome.runtime.getManifest());
+  const url = isDev ? 'http://localhost:3012/' : 'https://app.saveeai.com/';
+  window.open(`${url}?input=` + encodeURIComponent(input.replace(/[\&]/g, ' ')), '_blank');
+}
+
+async function checkUserLoggedIn() {
+  const { user } = await chrome.storage.sync.get();
+  console.log('savee activated', user);
+  if (user == null) {
+    alert('You must be signed in to use Savee to generate responses. Please click on the extension icon and sign in.');
+    return false;
+  }
+  return true;
+}
+
 // listener to receive message from background.js and execute getSaveeResponse function
 chrome.runtime.onMessage.addListener(async function (message, sender, sendResponse) {
   if (message.text === "activate-savee") {
+    config = await getRemoteConfig(); // renew config to make sure we have latest config
 
-    // const { user } = await chrome.storage.sync.get();
-    // console.log('savee activated', user);
-    // if (user == null) {
-    //   alert('You must be signed in to use Savee to generate responses. Please click on the extension icon and sign in.');
-    //   return;
-    // }
+    if (config.requireAuthOnClick) {
+      if (!await checkUserLoggedIn()) return;
+    }
 
-    const isDev = !('update_url' in chrome.runtime.getManifest());
-    const url = isDev ? 'http://localhost:3012/' : 'https://app.saveeai.com/';
-    window.open(`${url}?input=` + encodeURIComponent(message.selection.replace(/[\&]/g, ' ')), '_blank');
-    return;
+    try {
+      if (!config.useInjectResponse) throw 'Response injection is disabled!';
 
-    const twitterTextArea = document.querySelector('[data-testid="tweetTextarea_0"]');
-    const facebookTextArea = document.querySelector('[aria-label="כתיבת תגובה"]') || document.querySelector('[aria-label="Write a comment"]');
-    const instagramTextArea = document.querySelector('[aria-label="Add a comment…"]');
-    const exsistTextArea = twitterTextArea || facebookTextArea || instagramTextArea;
-    if (exsistTextArea) {
-      exsistTextArea.focus();
-      showLoadingIndicator();
-      getSaveeResponse(message.selection).then(response => {
-        hideLoadingIndicator();
-        if (response === "Bad input.") {
-          alert("Savee is only active for posts that contain false facts about the Holocaust");
-        } else {
-          document.execCommand("insertText", false, response);
-        }
-      });
-    } else {
-      alert("Error: Could not find replay area.");
+      const twitterTextArea = document.querySelector('[data-testid="tweetTextarea_0"]');
+      const facebookTextArea = document.querySelector('[aria-label="כתיבת תגובה"]') || document.querySelector('[aria-label="Write a comment"]');
+      const instagramTextArea = document.querySelector('[aria-label="Add a comment…"]');
+      const exsistTextArea = twitterTextArea || facebookTextArea || instagramTextArea;
+      if (exsistTextArea) {
+        exsistTextArea.focus();
+        showLoadingIndicator();
+        getSaveeResponse(message.selection).then(response => {
+          hideLoadingIndicator();
+          if (response === "Bad input.") {
+            alert("Savee is only active for posts that contain false facts about the Holocaust");
+          } else {
+            document.execCommand("insertText", false, response);
+          }
+        });
+      } else {
+        throw new Error(JSON.stringify({
+          message: 'Could not find replay area',
+          metadata: { twitterTextArea, facebookTextArea, instagramTextArea }
+        }));
+      }
+    } catch (err) {
+      if (config.useOpenTab) {
+        openAppTab(message.selection);
+      } else {
+        alert("Error: " + (err?.message || err));
+      }
     }
   }
 });

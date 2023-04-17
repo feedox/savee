@@ -77,7 +77,7 @@ chrome.runtime.onMessage.addListener(async function (message, sender, sendRespon
 
     const isDev = !('update_url' in chrome.runtime.getManifest());
     const url = isDev ? 'http://localhost:3012/' : 'https://app.saveeai.com/';
-    window.open(`${url}?input=` + encodeURI(message.selection.replace(/[\&]/g, ' ')), '_blank');
+    window.open(`${url}?input=` + encodeURIComponent(message.selection.replace(/[\&]/g, ' ')), '_blank');
     return;
 
     const twitterTextArea = document.querySelector('[data-testid="tweetTextarea_0"]');

@@ -24,7 +24,7 @@
 	"content_scripts": [
 		{
 			"matches": ["https://*.facebook.com/*", "https://*.instagram.com/*", "https://*.twitter.com/*"],
-			"js": ["content.js"]
+			"js": ["libs/libx.min.js", "content.js"]
 		}
 	],
 	"externally_connectable": {

@@ -9,6 +9,12 @@
 	],
 	"hosting": {
 		"public": "packages/web/build-web",
-		"ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+		"ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+		"rewrites": [
+			{
+				"source": "**",
+				"destination": "/index.html"
+			}
+		]
 	}
 }

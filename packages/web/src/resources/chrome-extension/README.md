@@ -15,6 +15,7 @@ Savee is a Chrome extension that allows users to mark text containing false cont
     -   Open Google Chrome and go to chrome://extensions/.
     -   Enable the "Developer mode" toggle on the top right-hand corner of the page.
     -   Click the "Load unpacked" button and select the chrome-extension folder from the repository. The Savee Chrome Extension should now be loaded and ready to use.
+    -   Debug popup.html locally: [chrome-extension://<id>/popup.html](chrome-extension://<id>/popup.html) (find the ID in  chrome://extensions/).
 
 -   Note: For each update to the code, just save the files and refresh the extension at chrome://extensions/.
 

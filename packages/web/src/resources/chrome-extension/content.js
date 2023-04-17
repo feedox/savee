@@ -65,8 +65,16 @@ function hideLoadingIndicator() {
 }
 
 // listener to receive message from background.js and execute getSaveeResponse function
-chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
+chrome.runtime.onMessage.addListener(async function (message, sender, sendResponse) {
   if (message.text === "activate-savee") {
+
+    const { user } = await chrome.storage.sync.get();
+    console.log('savee activated', user);
+    if (user == null) {
+      alert('You must be signed in to use Savee to generate responses. Please click on the extension icon and sign in.');
+      return;
+    }
+
     const twitterTextArea = document.querySelector('[data-testid="tweetTextarea_0"]');
     const facebookTextArea = document.querySelector('[aria-label="כתיבת תגובה"]') || document.querySelector('[aria-label="Write a comment"]');
     const instagramTextArea = document.querySelector('[aria-label="Add a comment…"]');
@@ -82,8 +90,8 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
           document.execCommand("insertText", false, response);
         }
       });
+    } else {
+      alert("Error: Could not find replay area.");
     }
   }
 });
-
-

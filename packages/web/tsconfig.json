@@ -8,7 +8,8 @@
 		"removeComments": true,
 		"preserveConstEnums": true,
 		"experimentalDecorators": true,
-		"declaration": true,
+		// "declaration": true,
+		"preserveSymlinks": true,
 		"sourceMap": true,
 		// "allowJs": true,
 		// "noImplicitThis": true,
@@ -33,17 +34,12 @@
 		"paths": {
 			"@scripts/ts/browserified/*": ["./ts/browserified/*"],
 			"@proj/libs/src": ["@proj/libs/build"],
-			"/frame/scripts/ts/browserified/frame.js": [
-				"../../node_modules/frame.libx.js/build-web/scripts/ts/browserified/frame.js"
-				// "build-web/frame/scripts/ts/browserified/frame",
-				// "../../node_modules/frame.libx.js/build-web/scripts/ts/browserified/frame"
-			],
+			"/frame/scripts/ts/browserified/frame.js": ["../../node_modules/frame.libx.js/build-web/scripts/ts/browserified/frame.js"],
 			"/frame/scripts/ts/browserified/frame-libs.js": ["../../node_modules/frame.libx.js/build-web/scripts/ts/browserified/frame-libs"],
 			"/frame/scripts/ts/*": ["../../node_modules/frame.libx.js/build-web/scripts/ts//*"],
 			"frame.libx.js/build-web/*": ["build-web/frame/*"],
 			"/scripts/*": ["./*"],
 			"./*": ["./ts/*"]
-			// "../scripts/browserified": [ "./scripts/*"],
 		}
 	},
 	"files": ["node_modules/frame.libx.js/src/web/src-web/scripts/ts/global.d.ts", "node_modules/frame.libx.js/src/web/src-web/scripts/ts/vue.d.ts"],

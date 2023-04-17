@@ -1,7 +1,7 @@
 {
-	"projectName": "alt-gpt",
-	"projectCaption": "alt-gpt",
-	"version": "0.0.1",
+	"projectName": "savee-ai",
+	"projectCaption": "Savee",
+	"version": "0.1.0",
 	"private": {
 		"appStoreId": "",
 		"livereload": false,
@@ -12,6 +12,17 @@
 		"reloadDebounceMS": 500,
 		"reloadGraceMS": 500
 	},
+	"firebaseConfig": {
+		"apiKey": "AIzaSyAnry8fpqcf2NZgOqYACQ3A8amb66zektU",
+		"authDomain": "savee-ai.firebaseapp.com",
+		"databaseURL": "https://savee-ai-default-rtdb.europe-west1.firebasedatabase.app",
+		"projectId": "savee-ai",
+		"storageBucket": "savee-ai.appspot.com",
+		"messagingSenderId": "849964022934",
+		"appId": "1:849964022934:web:70dff69af2fb2fd4c416b7",
+		"measurementId": "G-WERKCYLJMS"
+	},
+	"extensionId": "jknbnmnciilnibdefeeabhnkdglnelnh",
 
 	"compiledFolder": "./src/compile/",
 	"compiledMainEntry": "main.js",

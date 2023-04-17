@@ -1,6 +1,6 @@
 {
 	"name": "savee extension",
-	"version": "1.0",
+	"version": "2.0",
 	"description": "Provides a response to posts containing holocaust denial",
 	"manifest_version": 3,
 	"icons": {
@@ -23,7 +23,7 @@
 	},
 	"content_scripts": [
 		{
-			"matches": ["https://www.facebook.com/*", "https://www.instagram.com/*", "https://twitter.com/*"],
+			"matches": ["https://*.facebook.com/*", "https://*.instagram.com/*", "https://*.twitter.com/*"],
 			"js": ["content.js"]
 		}
 	],

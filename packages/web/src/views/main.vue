@@ -1,6 +1,11 @@
 <template lang="pug">
 .view.content
 	
+	h1 Install:
+	p.
+		Navigate to our <a href="https://chrome.google.com/webstore/detail/savee-extension/alafifglmhhgmlghmlmhgbkkmlnpogpk" target="_blank">Chrome Extension</a> and install it.
+		After installing, you might need to first click on it in the extensions panel in your browser.
+
 	h1 Getting Started:
 	img(src='https://raw.githubusercontent.com/feedox/savee/master/savee_demo.gif', alt='Savee demo')
 	p.
@@ -26,7 +31,7 @@ export default {
 		}});
 	},
 	mounted() {
-		this.$app.api.showLogin({ caption: null, canCancel: [], providers: ['google', 'facebook'], delay: 100 });
+		this.$app.api.showLogin({ caption: 'login', canCancel: [], providers: ['google', 'facebook'], delay: 100 });
 
 	},
 	methods: {},

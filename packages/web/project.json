@@ -22,17 +22,18 @@
 		"appId": "1:849964022934:web:70dff69af2fb2fd4c416b7",
 		"measurementId": "G-WERKCYLJMS"
 	},
-	"extensionId": "jknbnmnciilnibdefeeabhnkdglnelnh",
 
 	"compiledFolder": "./src/compile/",
 	"compiledMainEntry": "main.js",
 
 	"envs": {
 		"prod": {
-			"env": "prod"
+			"env": "prod",
+			"extensionId": "alafifglmhhgmlghmlmhgbkkmlnpogpk"
 		},
 		"dev": {
 			"env": "dev",
+			"extensionId": "jknbnmnciilnibdefeeabhnkdglnelnh",
 			"apiUrl": "http://localhost:8080",
 			"websiteUrl": "https://localhost:{{debugPort}}",
 			"private": {

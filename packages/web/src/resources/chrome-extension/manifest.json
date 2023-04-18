@@ -1,6 +1,6 @@
 {
 	"name": "savee extension",
-	"version": "2.5",
+	"version": "2.7",
 	"description": "Provides a response to posts containing holocaust denial",
 	"manifest_version": 3,
 	"icons": {
@@ -28,6 +28,6 @@
 		}
 	],
 	"externally_connectable": {
-		"matches": ["http://localhost:3012/*", "https://savee-ai.web.app/*", "https://saveeai.com/*"]
+		"matches": ["http://localhost:3012/*", "https://savee-ai.web.app/*", "https://saveeai.com/*", "https://app.saveeai.com/*"]
 	}
 }

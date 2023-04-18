@@ -89,10 +89,8 @@ function openAppTab(input) {
 async function checkUserLoggedIn() {
   const { user } = await chrome.storage.sync.get();
   console.log('savee activated', user);
-  if (user == null) {
-    alert('You must be signed in to use Savee to generate responses. Please click on the extension icon and sign in.');
-    return false;
-  }
+  if (user == null) return false;
+
   return true;
 }
 
@@ -101,12 +99,15 @@ chrome.runtime.onMessage.addListener(async function (message, sender, sendRespon
   if (message.text === "activate-savee") {
     config = await getRemoteConfig(); // renew config to make sure we have latest config
 
-    if (config.requireAuthOnClick) {
-      if (!await checkUserLoggedIn()) return;
-    }
-
     try {
       if (!config.useInjectResponse) throw 'Response injection is disabled!';
+
+      if (config.requireAuthOnClick || !config.useOpenTab) {
+        if (!await checkUserLoggedIn()) {
+          alert('You must be signed in to use Savee to generate responses. Please sign in.');
+          throw 'User not logged in!';
+        }
+      }
 
       const twitterTextArea = document.querySelector('[data-testid="tweetTextarea_0"]');
       const facebookTextArea = document.querySelector('[aria-label="כתיבת תגובה"]') || document.querySelector('[aria-label="Write a comment"]');

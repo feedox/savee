@@ -59,8 +59,8 @@ export default {
 		this.input = this.inputArg;
 		
 		setTimeout(()=>{
-			if (!app.userManager.isSignedIn()) this.$app.api.showLogin({ caption: 'login', canCancel: [], providers: ['google', 'facebook'], delay: 800 });
-		}, 500);
+			if (!app.userManager.isSignedIn()) this.$app.api.showLogin({ caption: 'login', canCancel: [], providers: ['google', 'facebook'] });
+		}, 1500);
 		setTimeout(()=>{
 			if (this.input != null) Helpers.scrollTo('footer');
 		}, 100);

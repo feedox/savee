@@ -48,6 +48,7 @@
 <script lang="ts">
 import helpers from '/scripts/ts/app.helpers.js';
 import { libx, ProxyCache } from '/frame/scripts/ts/browserified/frame.js';
+import { api } from '../../scripts/ts/shared/api.js';
 
 const chrome = (<any>window).chrome;
 
@@ -66,7 +67,6 @@ export default {
 	},
 	props: ['caption', 'providers'],
 	created() {
-		console.log('---- main!')
 		helpers.updateMeta({...this.$app.layout.headers, ...{
 			desc: 'Innovation first',
 			image: '/resources/imgs/main/main-link-preview-innovation.png',
@@ -131,13 +131,6 @@ export default {
 		}
 	},
 	methods: {
-		async sendMessageToExtension(msg) {
-			var port = chrome.runtime.connect(window.projconfig.extensionId); 
-			port.onMessage.addListener(function (event) { 
-				console.log('onMessage: ', event);
-			});
-			port.postMessage(msg);
-		},
 		hasProvider(providerName) {
 			if (this.providers == null || this.providers == '') return true;
 			return this.providers.indexOf(providerName) != -1
@@ -180,14 +173,14 @@ export default {
 
 				this.$emit('loggedIn');
 				const userData = { id: app.userManager.data.public.id, name: app.userManager.data.public.displayName, email: app.userManager.data.private.email };
-				this.sendMessageToExtension({ type: 'login-success', data: userData })
+				api.sendMessageToExtension({ type: 'login-success', data: userData } , window.projconfig.extensionId);
 			} catch(err) {
 				app.helpers.toast('Failed to signin, error: ' + err?.message ?? err, 'is-danger');
 			}
 		},
 		async logout() {
 			await libx.di.modules.userManager.signOut();
-			this.sendMessageToExtension({ type: 'logout-success', data: null })
+			api.sendMessageToExtension({ type: 'logout-success', data: null }, window.projconfig.extensionId);
 		},
 	},
 	watch: {},

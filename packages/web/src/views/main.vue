@@ -49,7 +49,6 @@ export default {
 		};
 	},
 	created() {
-		console.log('---- main!')
 		Helpers.updateMeta({...this.$app.layout.headers, ...{
 			desc: 'Innovation first',
 			image: '/resources/imgs/[tbd].png',
@@ -59,7 +58,7 @@ export default {
 		this.input = this.inputArg;
 		
 		setTimeout(()=>{
-			if (!app.userManager.isSignedIn()) this.$app.api.showLogin({ caption: 'login', canCancel: [], providers: ['google', 'facebook'] });
+			if (!app.userManager.isSignedIn()) this.$app.api.showLogin({ caption: '', canCancel: [], providers: ['google', 'facebook'] });
 		}, 1500);
 		setTimeout(()=>{
 			if (this.input != null) Helpers.scrollTo('footer');

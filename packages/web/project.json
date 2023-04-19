@@ -6,7 +6,7 @@
 		"appStoreId": "",
 		"livereload": false,
 		"livereloadPort": 35732,
-		"debugHost": "localhost",
+		"host": "localhost",
 		"debugIsSecure": false,
 		"post": 3012,
 		"reloadDebounceMS": 500,

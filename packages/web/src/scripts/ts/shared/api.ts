@@ -73,6 +73,14 @@ export class API {
 			console.error(error);
 		}
 	}
+
+	public async sendMessageToExtension(msg, extensionId) {
+		var port = (<any>window).chrome.runtime.connect(extensionId);
+		// port.onMessage.addListener(function (event) {
+		// 	console.log('onMessage: ', event);
+		// });
+		port.postMessage(msg);
+	}
 }
 
 export class ModuleOptions {

@@ -23,8 +23,15 @@
 	},
 	"content_scripts": [
 		{
-			"matches": ["https://*.facebook.com/*", "https://*.instagram.com/*", "https://*.twitter.com/*"],
-			"js": ["libs/libx.min.js", "content.js"]
+			"matches": ["https://*.facebook.com/*", "https://*.instagram.com/*", "https://*.twitter.com/*", "https://*.tiktok.com/*"],
+			"js": ["libs/libx.min.js", "content.js"],
+			"type": "module"
+		}
+	],
+	"web_accessible_resources": [
+		{
+			"resources": ["libs/api.js"],
+			"matches": ["<all_urls>"]
 		}
 	],
 	"externally_connectable": {

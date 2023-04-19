@@ -99,7 +99,7 @@ v0.1:
 ### Start:
 
 1. Run `$ yarn web`
-2. Open browser on `http://0.0.0.0:3010/`
+2. Open browser on `http://localhost:3012/`
 
 -   Check main package.json for more commands
 

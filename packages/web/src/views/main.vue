@@ -38,7 +38,7 @@
 <script lang="ts">
 import { libx } from '/frame/scripts/ts/browserified/frame.js';
 import Helpers from '/scripts/ts/app.helpers.js';
-import { api } from '/scripts/ts/api.js';
+import { api } from '../scripts/ts/shared/api.js';
 
 export default {
 	data() {
@@ -73,7 +73,7 @@ export default {
 				return;
 			}
 			this.isBusy = true; this.$forceUpdate;
-			const output = await api.generateResponse(this.input);
+			const output = await api.generateResponse(this.input, app.userManager.data.public.id);
 			console.log('submit: output: ', output);
 			if (output?.toLowerCase().contains('bad input')) {
 				this.output = "Savee is only active for posts that contain false facts about the Holocaust";

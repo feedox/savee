@@ -1,41 +1,9 @@
-// function to call the Feedox API and return the response
-async function getSaveeResponse(post) {
-  const url = 'https://api.feedox.com/v1/ai/conversation/5579120785547-8400';
-  const config = {
-    headers: {
-      'accept': '*/*',
-      'content-type': 'application/json; charset=UTF-8',
-      'accept-language': 'en-GB,en;q=0.9,en-US;q=0.8,he;q=0.7,es;q=0.6'
-    }
-  };
-  const data = {
-    messages: [
-      {
-        role: 'user',
-        content: "input: \"" + post + "\""
-      }
-    ],
-    "userId": "HWYnPaVfS3aoTLVlVxmAD4ISgwi2"
-  };
-  try {
-    const response = await fetch(url, {
-      method: 'POST',
-      ...config,
-      body: JSON.stringify(data),
-    });
-    console.log(data);
-    const result = await response.json();
-    console.log(result);
-    console.log("your post is:" + post);
-    console.log("your response is:" + result[0].content);
-    if (result[0].content) {
-      return result[0].content;
-    }
-  } catch (error) {
-    console.log('error');
-    console.error(error);
-  }
-}
+// Inject API module:
+let api = null;
+(async () => {
+  const { api: _api } = await import((chrome.runtime.getURL || chrome.extension.getURL)('./libs/api.js'));
+  api = _api;
+})();
 
 // function to create and show a loading indicator
 function showLoadingIndicator() {
@@ -67,7 +35,6 @@ function hideLoadingIndicator() {
 async function getRemoteConfig() {
   try {
     const ret = await libx.di.modules.network.httpGetJson('https://savee-ai-default-rtdb.europe-west1.firebasedatabase.app/Savee/ext-remote-config.json')
-    console.log('getRemoteConfig: ', ret);
     return ret;
   } catch (err) {
     console.warn('getRemoteConfig: Failed to get remote config', err);
@@ -78,6 +45,7 @@ async function getRemoteConfig() {
 let config = {};
 (async () => {
   config = await getRemoteConfig();
+  console.log('savee:getRemoteConfig: ', config);
 })();
 
 function openAppTab(input) {
@@ -86,24 +54,26 @@ function openAppTab(input) {
   window.open(`${url}?input=` + encodeURIComponent(input.replace(/[\&]/g, ' ')), '_blank');
 }
 
-async function checkUserLoggedIn() {
+async function getUserLoggedIn() {
   const { user } = await chrome.storage.sync.get();
-  console.log('savee activated', user);
-  if (user == null) return false;
-
-  return true;
+  return user;
 }
 
 // listener to receive message from background.js and execute getSaveeResponse function
 chrome.runtime.onMessage.addListener(async function (message, sender, sendResponse) {
   if (message.text === "activate-savee") {
+    const user = await getUserLoggedIn();
+
     config = await getRemoteConfig(); // renew config to make sure we have latest config
+    api.options.useDocs = config.useDocs;
+
+    console.log('savee: activated', user, config);
 
     try {
       if (!config.useInjectResponse) throw 'Response injection is disabled!';
 
       if (config.requireAuthOnClick || !config.useOpenTab) {
-        if (!await checkUserLoggedIn()) {
+        if (user == null) {
           alert('You must be signed in to use Savee to generate responses. Please sign in.');
           throw 'User not logged in!';
         }
@@ -116,13 +86,27 @@ chrome.runtime.onMessage.addListener(async function (message, sender, sendRespon
       if (exsistTextArea) {
         exsistTextArea.focus();
         showLoadingIndicator();
-        getSaveeResponse(message.selection).then(response => {
+
+        const start = new Date().getTime();
+        let promise = null;
+        if (config.extractClaims) {
+          promise = api.classifyAndGenerate(message.selection, user.id);
+        } else {
+          promise = api.generateResponse(message.selection, user.id);
+        }
+
+        promise.then(response => {
+          const durationMS = new Date().getTime() - start;
+          console.log('savee: Duration: ', durationMS);
+
           hideLoadingIndicator();
           if (response === "Bad input.") {
             alert("Savee is only active for posts that contain false facts about the Holocaust");
           } else {
             document.execCommand("insertText", false, response);
           }
+        }).catch(err => {
+          alert("Error: " + err?.message ?? err);
         });
       } else {
         throw new Error(JSON.stringify({

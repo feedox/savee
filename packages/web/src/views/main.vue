@@ -38,7 +38,7 @@
 <script lang="ts">
 import { libx } from '/frame/scripts/ts/browserified/frame.js';
 import Helpers from '/scripts/ts/app.helpers.js';
-import { api } from '/scripts/ts/api.js';
+import { api } from '../scripts/ts/shared/api.js';
 
 export default {
 	data() {
@@ -49,7 +49,6 @@ export default {
 		};
 	},
 	created() {
-		console.log('---- main!')
 		Helpers.updateMeta({...this.$app.layout.headers, ...{
 			desc: 'Innovation first',
 			image: '/resources/imgs/[tbd].png',
@@ -59,7 +58,7 @@ export default {
 		this.input = this.inputArg;
 		
 		setTimeout(()=>{
-			if (!app.userManager.isSignedIn()) this.$app.api.showLogin({ caption: 'login', canCancel: [], providers: ['google', 'facebook'] });
+			if (!app.userManager.isSignedIn()) this.$app.api.showLogin({ caption: '', canCancel: [], providers: ['google', 'facebook'] });
 		}, 1500);
 		setTimeout(()=>{
 			if (this.input != null) Helpers.scrollTo('footer');
@@ -73,7 +72,7 @@ export default {
 				return;
 			}
 			this.isBusy = true; this.$forceUpdate;
-			const output = await api.generateResponse(this.input);
+			const output = await api.generateResponse(this.input, app.userManager.data.public.id);
 			console.log('submit: output: ', output);
 			if (output?.toLowerCase().contains('bad input')) {
 				this.output = "Savee is only active for posts that contain false facts about the Holocaust";

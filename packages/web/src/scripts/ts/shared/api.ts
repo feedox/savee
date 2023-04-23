@@ -12,12 +12,14 @@ export class API {
 		const messages = [
 			{
 				role: 'user',
-				content: `User has posted this: "${text}".\n\nGenerate a fact-correcting response for this post so I could post it on Twitter.`,
+				content: `User has posted this: "${text}".`,
 			},
 		];
 		if (claims != null) {
 			messages[0].content += `\n claims: "${claims}".`;
 		}
+		messages[0].content += `\n\nWrite a response in Twitter style.`;
+
 		return await this.getCompletion(this.botsMapping.factCorrectingAgent, messages, userId);
 	}
 

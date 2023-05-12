@@ -2,6 +2,11 @@
 
 A GenAI tool that helps fight online fake content with fact-based generations
 
+ [Chrome extension code](https://github.com/feedox/savee/tree/master/packages/web/src/resources/chrome-extension)
+
+ [Chrome extension open issues](https://github.com/feedox/savee/issues/23)
+
+
 ## Demo
 
 ![savee_demo](savee_demo.gif)

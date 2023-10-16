@@ -30,7 +30,7 @@
 	],
 	"web_accessible_resources": [
 		{
-			"resources": ["libs/api.js"],
+			"resources": ["libs/api.js","thinking.gif" ],
 			"matches": ["<all_urls>"]
 		}
 	],

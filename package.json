@@ -26,6 +26,5 @@
 	"devDependencies": {
 		"concurrently": "^7.4.0",
 		"pax.libx.js": "^0.6.23"
-	},
-	"packageManager": "yarn@2.4.3"
+	}
 }

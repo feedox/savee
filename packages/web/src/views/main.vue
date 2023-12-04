@@ -72,7 +72,7 @@ export default {
 				return;
 			}
 			this.isBusy = true; this.$forceUpdate;
-			const output = await api.generateResponse(this.input, app.userManager.data.public.id);
+			const output = await api.generateResponse(this.input, app.userManager?.data?.public?.id);
 			console.log('submit: output: ', output);
 			if (output?.toLowerCase().contains('bad input')) {
 				this.output = "Savee is only active for posts that contain false facts about the Holocaust";

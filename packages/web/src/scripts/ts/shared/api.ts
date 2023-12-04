@@ -57,7 +57,7 @@ export class API {
 		};
 		const data = {
 			messages,
-			userId: 'HWYnPaVfS3aoTLVlVxmAD4ISgwi2',
+			userId: 'yB4fVzkpRSdLDwYWA0SdSOgUhdc2',
 			externalUserId: userId,
 			useDocs: this.options.useDocs,
 		};

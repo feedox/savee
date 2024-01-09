@@ -9,13 +9,13 @@ document.addEventListener('DOMContentLoaded', async function () {
 		'callToAction': user == null ? 'Login' : 'Dashboard',
 	};
 
-	template.innerHTML = libx.formatify(template.innerHTML, args);
+	template.innerHTML = libx.helpers.formatify(template.innerHTML, args);
 });
 
 chrome.runtime.onMessage.addListener(
 	function (request, sender, sendResponse) {
 		console.log('popup: onMessage: ', request);
-		libx.browser.helpers.reload();
+		window.location = window.location;
 		// if (request.msg === "something_completed") { }
 	}
 );

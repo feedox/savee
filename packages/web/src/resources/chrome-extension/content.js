@@ -35,7 +35,7 @@ function hideLoadingIndicator() {
 
 async function getRemoteConfig() {
 	try {
-		const ret = await libx.di.modules.network.httpGetJson('https://savee-ai-default-rtdb.europe-west1.firebasedatabase.app/Savee/ext-remote-config.json');
+		const ret = await libx.network.httpGetJson('https://savee-ai-default-rtdb.europe-west1.firebasedatabase.app/Savee/ext-remote-config.json');
 		return ret;
 	} catch (err) {
 		console.warn('getRemoteConfig: Failed to get remote config', err);

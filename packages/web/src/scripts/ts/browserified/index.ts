@@ -1,6 +1,5 @@
-import 'firebase/database';
-import 'firebase/auth';
-import 'firebase/analytics';
-import firebase from 'firebase/app';
+import { network } from "libx.js/build/modules/Network";
+import { helpers } from "libx.js/build/helpers/index";
 
-export { firebase };
+//@ts-ignore
+window.libx = { helpers, network };

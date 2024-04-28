@@ -81,3 +81,6 @@ build-web/
 
 project-secrets-open.json
 packages/functions/lib/
+packages/web/src/resources/chrome-extension/popup/popup.js
+packages/web/src/resources/chrome-extension/popup/popup.js
+packages/web/src/resources/chrome-extension/popup/popup.pug

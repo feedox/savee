@@ -1,20 +1,25 @@
 {
+"update_url": "https://clients2.google.com/service/update2/crx",
+
 	"name": "savee extension",
-	"version": "2.9",
-	"description": "Provides a response to posts containing holocaust denial",
+	"version": "2.9.5",
+	"description": "Provides a response to posts containing Holocaust denial and anti-Semitic content",
 	"manifest_version": 3,
 	"icons": {
 		"16": "savee_logo.png",
 		"48": "savee_logo.png",
 		"128": "savee_logo.png"
 	},
-	"permissions": ["contextMenus", "storage"],
+	"permissions": [
+		"contextMenus",
+		"storage"
+	],
 	"background": {
 		"service_worker": "background.js"
 	},
 	"action": {
 		"default_title": "Savee",
-		"default_popup": "popup/popup.html",
+		"default_popup": "popup.html",
 		"default_icon": {
 			"16": "savee_logo.png",
 			"48": "savee_logo.png",
@@ -23,18 +28,36 @@
 	},
 	"content_scripts": [
 		{
-			"matches": ["https://*.facebook.com/*", "https://*.instagram.com/*", "https://*.twitter.com/*", "https://*.tiktok.com/*"],
-			"js": ["libs/libx.min.js", "content.js"],
+			"matches": [
+				"https://*.facebook.com/*",
+				"https://*.instagram.com/*",
+				"https://*.twitter.com/*",
+				"https://*.tiktok.com/*",
+				"https://*.reddit.com/*"
+			],
+			"js": [
+				"content.js"
+			],
 			"type": "module"
 		}
 	],
 	"web_accessible_resources": [
 		{
-			"resources": ["libs/api.js","thinking.gif" ],
-			"matches": ["<all_urls>"]
+			"resources": [
+				"libs/api.js",
+				"thinking.gif"
+			],
+			"matches": [
+				"<all_urls>"
+			]
 		}
 	],
 	"externally_connectable": {
-		"matches": ["http://localhost:3012/*", "https://savee-ai.web.app/*", "https://saveeai.com/*", "https://app.saveeai.com/*"]
+		"matches": [
+			"http://localhost:3012/*",
+			"https://savee-ai.web.app/*",
+			"https://saveeai.com/*",
+			"https://app.saveeai.com/*"
+		]
 	}
 }
